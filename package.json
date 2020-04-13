@@ -1,0 +1,16 @@
+{
+  "name": "conway",
+  "version": "1.0.0",
+  "description": "Implementation(s) of Conways Game of Life",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "author": "Christian Dohnert & the Interweb",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
