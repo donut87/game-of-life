@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index2.ts',
+  entry: {
+    app: './src/spaghetti/index.ts',
+    clean: './src/clean/index.ts'
+  },
   module: {
     rules: [
       {
@@ -15,7 +18,8 @@ module.exports = {
     extensions: [ '.tsx', '.ts' ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    // path: staticPath
   },
 };
