@@ -2,19 +2,24 @@ import GameOfLife from './conway.js'
 
 
 var stop = false;
-var frameCount = 0;
-var fps, fpsInterval, startTime, now, then, elapsed;
 
+var fpsInterval, now, then, elapsed;
 
-startAnimating(2);
+startAnimating(5);
 
 function startAnimating(fps) {
   fpsInterval = 1000 / fps;
   then = Date.now();
-  startTime = then;
 }
 
 const theGame = new GameOfLife
+// theGame.gameBoard[2][2] = true
+// theGame.gameBoard[2][1] = true
+// theGame.gameBoard[2][0] = true
+// theGame.gameBoard[1][2] = true
+// theGame.gameBoard[0][1] = true
+
+
 
 theGame.gameBoard[2][3] = true
 theGame.gameBoard[3][3] = true
@@ -36,33 +41,33 @@ theGame.gameBoard[18][3] = true
 theGame.gameBoard[19][3] = true
 theGame.gameBoard[20][3] = true
 
-const theCanvas = document.getElementById('canvas')
+// const theCanvas = document.getElementById('canvas')
 const context = canvas.getContext("2d");
 
 context.fillStyle = "#FFFFFF";
 context.fillRect(0,0,400,400)
 
 
-function update(progress) {
+function update() {
   theGame.nextRound()
   if(theGame.isDead()) {stop = true}
 }
 
 function draw() {
   context.fillStyle = "#FFFFFF";
-  context.fillRect(0,0,800,800)
+  context.fillRect(0,0,500,500)
   context.fillStyle = "#000000";
 
   for (var i = 0; i < theGame.gameBoard.length; i++) {
     for (var j = 0; j < theGame.gameBoard[i].length; j++) {
       if(theGame.gameBoard[i][j]) {
-        context.fillRect(i * 8, j * 8, 8, 8)
+        context.fillRect(i * 4 + i, j * 4 + j, 4, 4)
       }
     }
   }
 }
 
-function loop(timestamp) {
+function loop() {
   if(stop) {
     window.alert("Thanks for playing")
     return
@@ -78,5 +83,5 @@ function loop(timestamp) {
     draw()
   }
 }
-var lastRender = 0
+// var lastRender = 0
 window.requestAnimationFrame(loop)
